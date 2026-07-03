@@ -1,6 +1,3 @@
-// -------------------------------
-// Basic Express Server
-// -------------------------------
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,7 +9,7 @@ app.use(express.json());
 // -------------------------------
 // MongoDB Connection
 // -------------------------------
-mongoose.connect(process.env.MONGO_URL || 'your-mongo-url-here', {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -34,7 +31,7 @@ const ListingSchema = new mongoose.Schema({
 const Listing = mongoose.model('Listing', ListingSchema);
 
 // -------------------------------
-// GET /listings Route
+// GET /listings
 // -------------------------------
 app.get('/listings', async (req, res) => {
   try {
@@ -46,7 +43,7 @@ app.get('/listings', async (req, res) => {
 });
 
 // -------------------------------
-// Root Test Route
+// Root Route
 // -------------------------------
 app.get('/', (req, res) => {
   res.send('Backend is running');
@@ -55,7 +52,7 @@ app.get('/', (req, res) => {
 // -------------------------------
 // Start Server
 // -------------------------------
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
